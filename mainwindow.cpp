@@ -12,7 +12,16 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->webView->page(), &QWebEnginePage::fullScreenRequested,
             [&](QWebEngineFullScreenRequest request) {
         request.accept();
-        this->showFullScreen();
+        if (request.toggleOn()) {
+            maximized = isMaximized();
+            this->showFullScreen();
+        } else {
+            if (maximized){
+                showMaximized();
+            } else {
+                showNormal();
+            }
+        }
     });
 }
 

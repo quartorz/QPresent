@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->webView->page(), &QWebEnginePage::fullScreenRequested,
-            [&](QWebEngineFullScreenRequest  &request) {
+            [&](QWebEngineFullScreenRequest request) {
         request.accept();
         this->showFullScreen();
     });
